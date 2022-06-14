@@ -36,10 +36,8 @@ function MyInfoComponent() {
     <div>
       <p>
         My name is {myName}
-        <br></br>
         <input
           type="text"
-          placeholder="     type name here"
           onChange={(event) => {
             const name = event.target.value;
             setMyName(name);
@@ -48,8 +46,7 @@ function MyInfoComponent() {
       </p>
 
       <p style={{ backgroundColor: myFavoriteColor }}>
-        My favorite color is {myFavoriteColor}
-        <br></br>
+        My favorite color is {myFavoriteColor};
         <input
           type="text"
           placeholder="    favorite color here"
