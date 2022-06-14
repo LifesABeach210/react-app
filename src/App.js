@@ -7,91 +7,106 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <ToDoCompenet />
+        <MyInfoComponent></MyInfoComponent>
+        <p>{/* Edit <code>src/App.js</code> and save to reload. */}</p>
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
       </header>
     </div>
   );
 }
 
-/*
-  Rules of Components:
-    1. PascalCase
-    2. Return Statement With () and single enclosing html element, usually <div></div>
-    3. Components can be included in other components like html elements
-*/
+// * Move the three variables you just created into the MyInfoComponent state via the React useState hook. The three state variables should still display on the page.
+// * Add three text input fields to the page.
+// * Add an onChange handler function to each text input field.
+// * Connect the setter function from React's useState hook to the event.target.value of the text input field. If you did it right, the state variables displayed to the page should update in real time as you type.
 
-const ToDoCompenet = () => {
-  const [title, setTitle] = useState("");
-  const [descriptions, setDescriptions] = useState("");
-  const [importance, setImportants] = useState('low');
-const [toDoList,setTodoList] = useState([]);
-
+function MyInfoComponent() {
+  const [myName, setMyName] = useState("");
+  const [myFavoriteColor, setMyFavoriteColor] = useState("");
+  const [myFavoriteMovie, setMyFavoriteMovie] = useState([]);
 
   return (
     <div>
-      <h4>To do List </h4>
-    <label>To Do Title:</label>
+      <p>
+        My name is {myName}
+        <br></br>
+        <input
+          type="text"
+          placeholder="     type name here"
+          onChange={(event) => {
+            const name = event.target.value;
+            setMyName(name);
+          }}
+        ></input>
+      </p>
 
-      <input
-        type="text"
-        value={title}
-        onChange={(e) => {
-          const newTitles = e.target.value;
-        }}
-      ></input>
-      <h4> descriptions:</h4>
-      <input
-        type="text"
-        value = {descriptions}
-      onChange={(e) => {
-          const newDescription = e.target.value;
-          setDescriptions(newDescription);
-        }}
-      ></input>
-      <h4>Priority:</h4>
-      <select value={importance}
-      onChange={(e) => {
-        setImportants(e.target.value);
-    }  }><option value="low">Low</option>
-        <option value="medium">Medium</option>
-        <option value="high">High</option>
-      </select>
-<button type = "button" value={toDoList}
-onClick = {(e)=>{
-  const newToDo = {title,descriptions,importance};
-  const updatedToDoList = [...toDoList];
-  updatedToDoList.push(newToDo);
-  setTodoList(updatedToDoList);
-  setTitle("");
-  setDescriptions("");
-setImportants("low");
+      <p style={{ backgroundColor: myFavoriteColor }}>
+        My favorite color is {myFavoriteColor}
+        <br></br>
+        <input
+          type="text"
+          placeholder="    favorite color here"
+          onChange={(event) => {
+            const color = event.target.value;
+            setMyFavoriteColor(color);
+          }}
+        ></input>
+      </p>
 
-} }>Submit</button>
-<div>
-       {toDoList.map((element, index) => {
-         return (
-           <div key={index}>
-             <ul>
-               <li>
-                 <h2>{element.title}</h2>
-                 <p>{element.description}</p>
-                 <h4>{element.importance}</h4>
-               </li>
-               <hr />
-             </ul>
-           </div>
-         )
-       })
-       }
-     </div>
-
-
-
-
-
-
-   </div >
- );
+      <p>
+        My favorite movies are:{" "}
+        {myFavoriteMovie.map((movie) => (
+          <li>{movie}</li>
+        ))}
+        <br></br>
+        <input
+          type="text"
+          placeholder="    first favorite movie"
+          onChange={(event) => {
+            const favoriteMovie1 = event.target.value;
+            setMyFavoriteMovie([
+              favoriteMovie1,
+              myFavoriteMovie[1],
+              myFavoriteMovie[2],
+            ]);
+          }}
+        ></input>
+        &nbsp;
+        <input
+          type="text"
+          placeholder=" second favorite movie"
+          onChange={(event) => {
+            const favoriteMovie2 = event.target.value;
+            setMyFavoriteMovie([
+              myFavoriteMovie[0],
+              favoriteMovie2,
+              myFavoriteMovie[2],
+            ]);
+          }}
+        ></input>
+        &nbsp;
+        <input
+          type="text"
+          placeholder="   third favorite movie"
+          onChange={(event) => {
+            const favoriteMovie3 = event.target.value;
+            setMyFavoriteMovie([
+              myFavoriteMovie[0],
+              myFavoriteMovie[1],
+              favoriteMovie3,
+            ]);
+          }}
+        ></input>
+      </p>
+    </div>
+  );
 }
 
 export default App;
