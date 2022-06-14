@@ -65,10 +65,9 @@ function MyInfoComponent() {
         {myFavoriteMovie.map((movie) => (
           <li>{movie}</li>
         ))}
-        <br></br>
+
         <input
           type="text"
-          placeholder="    first favorite movie"
           onChange={(event) => {
             const favoriteMovie1 = event.target.value;
             setMyFavoriteMovie([
@@ -78,10 +77,9 @@ function MyInfoComponent() {
             ]);
           }}
         ></input>
-        &nbsp;
+
         <input
           type="text"
-          placeholder=" second favorite movie"
           onChange={(event) => {
             const favoriteMovie2 = event.target.value;
             setMyFavoriteMovie([
@@ -91,10 +89,9 @@ function MyInfoComponent() {
             ]);
           }}
         ></input>
-        &nbsp;
+
         <input
           type="text"
-          placeholder="   third favorite movie"
           onChange={(event) => {
             const favoriteMovie3 = event.target.value;
             setMyFavoriteMovie([
